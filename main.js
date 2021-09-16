@@ -112,22 +112,12 @@ neptune.position.x = 85;
 //camera.position.z = 40;
 camera.position.set(0,50,0);
 
-
-
 controls = new OrbitControls(camera, renderer.domElement);
 
-var t = 0;
-var t1 = 0;
-var t2 = 0;
-var t3 = 0;
-var t4 = 0;
-var t5 = 0;
-var t6 = 0;
-var t7 = 0;
+var t=t1=t2=t3=t4=t5=t6=t7= 0;
 
 function animate() {
 	requestAnimationFrame( animate );
-
     
     ziemia.rotation.y += 0.01;
     slonce.rotation.y += 0.01;
