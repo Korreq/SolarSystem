@@ -146,7 +146,7 @@ function animate() {
 function rotate(){
     requestAnimationFrame( rotate );
     t  += 0.01;
-    t1 += 0.012;
+    t1 += 0.011;
     t2 += 0.015;
     t3 += 0.014;
     t4 += 0.016;
