@@ -8,12 +8,12 @@ function init(){
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight);
     renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth/1.48, window.innerHeight/1.48 );
+    renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
 
 
 
-    const geometry = new THREE.SphereGeometry(6,32,32);
+    const geometry = new THREE.SphereGeometry(5.5,32,32);
     const textura = new THREE.TextureLoader().load("images/sunmap.jpg");
     const material = new THREE.MeshBasicMaterial( { map: textura } );
     planeta = new THREE.Mesh( geometry, material );

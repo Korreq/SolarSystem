@@ -1,7 +1,7 @@
 import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
-
+var rotatee = Boolean(true);
 function init(){
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight);
@@ -114,10 +114,10 @@ jupiter.position.x = 50;
 saturn.position.x = 65;
 saturnring.position.x = saturn.position.x;
 saturnring.rotation.x = 1.6;
-uranus.position.x = 75;
+uranus.position.x = 80;
 uranusring.position.x = uranus.position.x;
 uranusring.rotation.x = 1.6;
-neptune.position.x = 85;
+neptune.position.x = 90;
 
 camera.position.set(0,50,0);
 
@@ -140,10 +140,11 @@ function animate() {
     saturnring.rotation.z += 0.01;
     uranusring.rotation.z += 0.01;
     renderer.render( scene, camera );
+
 }
 function rotate(){
     requestAnimationFrame( rotate );
-
+    if(rotatee == true){
     t  += 0.001, t1 += 0.0011, t2 += 0.0015, t3 += 0.0014, t4 += 0.0016, t5 += 0.0017, t6 += 0.0018, t7 += 0.0019;
 
     mercury.position.x = 10*Math.cos(t5);
@@ -173,7 +174,7 @@ function rotate(){
 
     neptune.position.x = 80*Math.cos(t);
     neptune.position.z = 80*Math.sin(t);
-
+    }
     renderer.render( scene, camera );
 }
 function PickPlanet() {
@@ -181,10 +182,13 @@ function PickPlanet() {
     const intersects = raycaster.intersectObjects(scene.children);
     for (let i = 0; i < intersects.length; i++) {
         switch(intersects[0].object.userData.parent){
-            case "mercury":
-                alert(intersects[0].object.userData.parent);
+            case "mercury":           
+                if(rotatee == true){
+                    rotatee = false;
+                }else{rotatee = true;}
                 break;
             case "venus":
+                camera.lookAt(venus.position);
                 alert(intersects[0].object.userData.parent);
                 break;
             case "earth":

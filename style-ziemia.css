@@ -1,4 +1,4 @@
-canvas {
+canvas#layer1 {
     position:fixed;
     top:0;
     left:0;
@@ -46,7 +46,6 @@ canvas {
     top: 20px;
     right: -500px;
     padding: 0;
-    background: #34b399;
     transition: 0.3s transform ease-in-out;
   }
   
