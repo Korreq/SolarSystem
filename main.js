@@ -46,7 +46,7 @@ const material_venus = new THREE.MeshStandardMaterial( { map: textura_venus } );
 const venus = new THREE.Mesh( geometry_venus, material_venus );
 
 const geometry_earth = new THREE.SphereGeometry(2,32,32);
-const textura_earth = new THREE.TextureLoader().load("images/earthmap1k.jpg");
+const textura_earth = new THREE.TextureLoader().load("images/earthmap.jpg");
 const material_earth = new THREE.MeshStandardMaterial( { map: textura_earth } );
 const earth = new THREE.Mesh( geometry_earth, material_earth );
 
