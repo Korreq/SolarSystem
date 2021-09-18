@@ -3,9 +3,17 @@ import * as THREE from 'three';
 import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
 
 function init(){
-
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight);
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+function onMouseMove( event ) {
+    // calculate mouse position in normalized device coordinates
+    // (-1 to +1) for both components
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+}
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -83,6 +91,16 @@ const normaltex_sun = new THREE.TextureLoader().load("images/sunbump.jpg")
 const material_sun = new THREE.MeshBasicMaterial( { map: textura_sun, normalMap: normaltex_sun } );
 const sun = new THREE.Mesh( geometry_sun, material_sun );
 
+sun.userData.parent = "sun";
+earth.userData.parent = "earth";
+mercury.userData.parent = "mercury";
+venus.userData.parent = "venus";
+mars.userData.parent = "mars";
+jupiter.userData.parent = "jupiter";
+saturn.userData.parent = "saturn";
+uranus.userData.parent = "uranus";
+neptune.userData.parent = "neptune";
+
 const light = new THREE.PointLight( 0xffffff, 2, 100 );
 light.position.set( 0, 0, 0 );
 
@@ -106,23 +124,6 @@ camera.position.set(0,50,0);
 var t=0,t1=0,t2=0,t3=0,t4=0,t5=0,t6=0,t7=0;
 
 const controls = new OrbitControls( camera, renderer.domElement );
-
-// //controls.update() must be called after any manual changes to the camera's transform
-// camera.position.set( 0, 20, 100 );
-// controls.update();
-
-// function animate() {
-
-// 	requestAnimationFrame( animate );
-
-// 	// required if controls.enableDamping or controls.autoRotate are set to true
-// 	controls.update();
-
-// 	renderer.render( scene, camera );
-
-// }
-// const help = new THREE.GridHelper(200,50);
-// scene.add(help);
 
 function animate() {
 	requestAnimationFrame( animate );
@@ -175,6 +176,43 @@ function rotate(){
 
     renderer.render( scene, camera );
 }
+function PickPlanet() {
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(scene.children);
+    for (let i = 0; i < intersects.length; i++) {
+        switch(intersects[0].object.userData.parent){
+            case "mercury":
+                alert(intersects[0].object.userData.parent);
+                break;
+            case "venus":
+                alert(intersects[0].object.userData.parent);
+                break;
+            case "earth":
+                alert(intersects[0].object.userData.parent);
+                break;
+            case "mars":
+                alert(intersects[0].object.userData.parent);
+                break;
+            case "jupiter":
+                alert(intersects[0].object.userData.parent);
+                break;
+            case "saturn":
+                alert(intersects[0].object.userData.parent);
+                break;
+            case "uranus":
+                alert(intersects[0].object.userData.parent);
+                break;
+            case "neptune":
+                alert(intersects[0].object.userData.parent);
+                break;
+            case "sun":
+                location.href = "sun.html";
+                break;
+        }
+    }
+  }
+window.addEventListener('click', PickPlanet);
+window.addEventListener('mousemove', onMouseMove, false); 
 
 animate();
 rotate();
