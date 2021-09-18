@@ -12,7 +12,11 @@ canvas {
     background: gray;
   }
   
+  script {
+    position: fixed;
+  }
   .site-nav {
+    position: absolute;
     display: flex;
     justify-content: flex-end;
     align-items: center;

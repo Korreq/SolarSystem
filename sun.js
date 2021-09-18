@@ -8,7 +8,7 @@ function init(){
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight);
     renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth/1.48, window.innerHeight/1.48 );
+    renderer.setSize( window.innerWidth/1.48, window.innerHeight/1.48);
     document.body.appendChild( renderer.domElement );
 
 
@@ -21,7 +21,7 @@ function init(){
     scene.add(planeta,camera);
     planeta.position.y = 0;
     //camera.position.set(10,0,0);
-    camera.position.set(0,0,10);
+    camera.position.set(0,0,17);
 
     function animate() {
         requestAnimationFrame( animate );
