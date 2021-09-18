@@ -57,7 +57,7 @@ const textura_saturn = new THREE.TextureLoader().load("images/saturnmap.jpg");
 const material_saturn = new THREE.MeshStandardMaterial( { map: textura_saturn } );
 const saturn = new THREE.Mesh( geometry_saturn, material_saturn );
 
-const geometry_saturnring = new THREE.TorusGeometry( 5, 0.4, 20, 100 );
+const geometry_saturnring = new THREE.TorusGeometry( 5, 2, 2, 100 );
 const textura_saturnring = new THREE.TextureLoader().load("images/saturnringcolor.jpg");
 const material_saturnring = new THREE.MeshStandardMaterial( { map: textura_saturnring } );
 const saturnring = new THREE.Mesh( geometry_saturnring, material_saturnring );
@@ -67,7 +67,7 @@ const textura_uranus = new THREE.TextureLoader().load("images/uranusmap.jpg");
 const material_uranus = new THREE.MeshStandardMaterial( { map: textura_uranus } );
 const uranus = new THREE.Mesh( geometry_uranus, material_uranus );
 
-const geometry_uranusring = new THREE.TorusGeometry( 4, 0.4, 20, 100 );
+const geometry_uranusring = new THREE.TorusGeometry( 4, 1.5, 2, 100 );
 const textura_uranusring = new THREE.TextureLoader().load("images/uranusringcolour.jpg");
 const material_uranusring = new THREE.MeshStandardMaterial( { map: textura_uranusring } );
 const uranusring = new THREE.Mesh( geometry_uranusring, material_uranusring );
@@ -141,14 +141,8 @@ function animate() {
 }
 function rotate(){
     requestAnimationFrame( rotate );
-    t  += 0.01;
-    t1 += 0.011;
-    t2 += 0.015;
-    t3 += 0.014;
-    t4 += 0.016;
-    t5 += 0.017;
-    t6 += 0.018;
-    t7 += 0.019;
+    
+    t  += 0.01, t1 += 0.011, t2 += 0.015, t3 += 0.014, t4 += 0.016, t5 += 0.017, t6 += 0.018, t7 += 0.019;
 
     mercury.position.x = 10*Math.cos(t5);
     mercury.position.z = 10*Math.sin(t5);
