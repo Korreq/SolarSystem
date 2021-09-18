@@ -2,7 +2,6 @@ import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
 
-//var scene,camera,renderer,ziemia,slonce,mars,controls,pawel2,mercury,venus,uranus,neptune,jupiter,saturn;
 function init(){
 
 const scene = new THREE.Scene();
@@ -12,15 +11,12 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-//const controls = new OrbitControls( camera, renderer.domElement );
-
-
 function stars(){
     const geometry = new THREE.SphereGeometry(0.25,24,24);
     const material = new THREE.MeshBasicMaterial({color: 0xffffff});
     const star = new THREE.Mesh(geometry,material);
 
-    const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+    const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(250));
     star.position.set(x,y,z);
     scene.add(star);
 }
@@ -44,7 +40,7 @@ const venus = new THREE.Mesh( geometry_venus, material_venus );
 const geometry_earth = new THREE.SphereGeometry(2,32,32);
 const textura_earth = new THREE.TextureLoader().load("images/earthmap1k.jpg");
 const material_earth = new THREE.MeshStandardMaterial( { map: textura_earth } );
-const ziemia = new THREE.Mesh( geometry_earth, material_earth );
+const earth = new THREE.Mesh( geometry_earth, material_earth );
 
 const geometry_mars = new THREE.SphereGeometry(1,32,32);
 const textura_mars = new THREE.TextureLoader().load("images/mars_1k_color.jpg");
@@ -84,24 +80,26 @@ const neptune = new THREE.Mesh( geometry_neptune, material_neptune );
 const geometry_sun = new THREE.SphereGeometry(7,32,32);
 const textura_sun = new THREE.TextureLoader().load("images/sunmap.jpg");
 const material_sun = new THREE.MeshBasicMaterial( { map: textura_sun } );
-const slonce = new THREE.Mesh( geometry_sun, material_sun );
+const sun = new THREE.Mesh( geometry_sun, material_sun );
 
 const light = new THREE.PointLight( 0xffffff, 2, 100 );
 light.position.set( 0, 0, 0 );
 
-scene.add(venus,mercury,ziemia,mars,slonce,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,light);
+scene.add(venus,mercury,earth,mars,sun,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,light);
+
 mercury.position.x = 10;
 venus.position.x = 20;
-ziemia.position.x = 30;
+earth.position.x = 30;
 mars.position.x = 40;
 jupiter.position.x = 50;
 saturn.position.x = 65;
-saturnring.position.x = 65;
+saturnring.position.x = saturn.position.x;
 saturnring.rotation.x = 1.6;
 uranus.position.x = 75;
-uranusring.position.x = 75;
+uranusring.position.x = uranus.position.x;
 uranusring.rotation.x = 1.6;
 neptune.position.x = 85;
+
 camera.position.set(0,50,0);
 
 var t=0,t1=0,t2=0,t3=0,t4=0,t5=0,t6=0,t7=0;
@@ -128,8 +126,8 @@ const controls = new OrbitControls( camera, renderer.domElement );
 function animate() {
 	requestAnimationFrame( animate );
     
-    ziemia.rotation.y += 0.01;
-    slonce.rotation.y += 0.01;
+    earth.rotation.y += 0.01;
+    sun.rotation.y += 0.01;
     mars.rotation.y += 0.01;
     venus.rotation.y += 0.01;
     mercury.rotation.y += 0.01;
@@ -158,8 +156,8 @@ function rotate(){
     venus.position.x = 20*Math.cos(t2);
     venus.position.z = 20*Math.sin(t2);
 
-    ziemia.position.x = 30*Math.cos(t7);
-    ziemia.position.z = 30*Math.sin(t7);
+    earth.position.x = 30*Math.cos(t7);
+    earth.position.z = 30*Math.sin(t7);
 
     mars.position.x = 40*Math.cos(t6);
     mars.position.z = 40*Math.sin(t6);
@@ -179,7 +177,7 @@ function rotate(){
 
     neptune.position.x = 80*Math.cos(t);
     neptune.position.z = 80*Math.sin(t);
-    
+
     renderer.render( scene, camera );
 }
 
