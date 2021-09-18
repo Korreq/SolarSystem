@@ -51,7 +51,7 @@ const material_earth = new THREE.MeshStandardMaterial( { map: textura_earth } );
 const earth = new THREE.Mesh( geometry_earth, material_earth );
 
 const geometry_mars = new THREE.SphereGeometry(1,32,32);
-const textura_mars = new THREE.TextureLoader().load("images/mars_1k_color.jpg");
+const textura_mars = new THREE.TextureLoader().load("images/marsmap.jpg");
 const material_mars = new THREE.MeshStandardMaterial( { map: textura_mars } );
 const mars = new THREE.Mesh( geometry_mars, material_mars );
 
