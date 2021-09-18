@@ -31,6 +31,17 @@ document.body.appendChild( renderer.domElement );
 // const help = new THREE.GridHelper(200,50);
 // scene.add(help);
 
+function stars(){
+    const geometry = new THREE.SphereGeometry(0.25,24,24);
+    const material = new THREE.MeshBasicMaterial({color: 0xffffff});
+    const star = new THREE.Mesh(geometry,material);
+
+    const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+    star.position.set(x,y,z);
+    scene.add(star);
+}
+Array(200).fill().forEach(stars);
+
 const pawel = new THREE.BoxGeometry(4,4,4);
 const paweltex = new THREE.TextureLoader().load("images/pawel.jpg");
 const pawel_mate = new THREE.MeshBasicMaterial({ map: paweltex}); 
@@ -109,7 +120,6 @@ uranus.position.x = 75;
 uranusring.position.x = 75;
 uranusring.rotation.x = 1.6;
 neptune.position.x = 85;
-//camera.position.z = 40;
 camera.position.set(0,50,0);
 
 controls = new OrbitControls(camera, renderer.domElement);
