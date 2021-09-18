@@ -79,7 +79,8 @@ const neptune = new THREE.Mesh( geometry_neptune, material_neptune );
 
 const geometry_sun = new THREE.SphereGeometry(7,32,32);
 const textura_sun = new THREE.TextureLoader().load("images/sunmap.jpg");
-const material_sun = new THREE.MeshBasicMaterial( { map: textura_sun } );
+const normaltex_sun = new THREE.TextureLoader().load("images/sunbump.jpg")
+const material_sun = new THREE.MeshBasicMaterial( { map: textura_sun, normalMap: normaltex_sun } );
 const sun = new THREE.Mesh( geometry_sun, material_sun );
 
 const light = new THREE.PointLight( 0xffffff, 2, 100 );
@@ -141,8 +142,8 @@ function animate() {
 }
 function rotate(){
     requestAnimationFrame( rotate );
-    
-    t  += 0.01, t1 += 0.011, t2 += 0.015, t3 += 0.014, t4 += 0.016, t5 += 0.017, t6 += 0.018, t7 += 0.019;
+
+    t  += 0.001, t1 += 0.0011, t2 += 0.0015, t3 += 0.0014, t4 += 0.0016, t5 += 0.0017, t6 += 0.0018, t7 += 0.0019;
 
     mercury.position.x = 10*Math.cos(t5);
     mercury.position.z = 10*Math.sin(t5);
