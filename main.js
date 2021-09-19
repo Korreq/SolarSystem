@@ -101,10 +101,15 @@ saturn.userData.parent = "saturn";
 uranus.userData.parent = "uranus";
 neptune.userData.parent = "neptune";
 
+//swiatło dyrekcyjne
 const light = new THREE.PointLight( 0xffffff, 2, 100 );
-light.position.set( 0, 0, 0 );
+//ambient light z poprawnymi ustawieniami żeby planety nie były żarówiaste
+//const amblight = new THREE.AmbientLight(0xffffff,0.75);
 
+light.position.set( 0, 0, 0 );
+//scene.add(amblight);
 scene.add(venus,mercury,earth,mars,sun,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,light);
+//scene.remove(light);
 
 mercury.position.x = 10;
 venus.position.x = 20;
