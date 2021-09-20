@@ -15,7 +15,7 @@ function init(){
 
 
     const geometry = new THREE.SphereGeometry(5.5,32,32);
-    const textura = new THREE.TextureLoader().load("images/sunmap.jpg");
+    const textura = new THREE.TextureLoader().load("images/earthmap.jpg");
     const material = new THREE.MeshBasicMaterial( { map: textura } );
     planeta = new THREE.Mesh( geometry, material );
 

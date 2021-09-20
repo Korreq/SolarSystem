@@ -85,6 +85,11 @@ const textura_neptune = new THREE.TextureLoader().load("images/neptunemap.jpg");
 const material_neptune = new THREE.MeshStandardMaterial( { map: textura_neptune } );
 const neptune = new THREE.Mesh( geometry_neptune, material_neptune );
 
+const geometry_pluto = new THREE.SphereGeometry(2,32,32);
+const textura_pluto = new THREE.TextureLoader().load("images/plutomap.jpg");
+const material_pluto = new THREE.MeshStandardMaterial( { map: textura_pluto } );
+const pluto = new THREE.Mesh( geometry_pluto, material_pluto );
+
 const geometry_sun = new THREE.SphereGeometry(7,32,32);
 const textura_sun = new THREE.TextureLoader().load("images/sunmap.jpg");
 const normaltex_sun = new THREE.TextureLoader().load("images/sunbump.jpg")
@@ -100,11 +105,12 @@ jupiter.userData.parent = "jupiter";
 saturn.userData.parent = "saturn";
 uranus.userData.parent = "uranus";
 neptune.userData.parent = "neptune";
+pluto.userData.parent = "pluton";
 
 const light = new THREE.PointLight( 0xffffff, 2, 100 );
 light.position.set( 0, 0, 0 );
 
-scene.add(venus,mercury,earth,mars,sun,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,light);
+scene.add(venus,mercury,earth,mars,sun,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,light,pluto);
 
 mercury.position.x = 10;
 venus.position.x = 20;
@@ -118,6 +124,7 @@ uranus.position.x = 80;
 uranusring.position.x = uranus.position.x;
 uranusring.rotation.x = 1.6;
 neptune.position.x = 90;
+pluto.position.x = 100;
 
 camera.position.set(0,50,0);
 
@@ -139,6 +146,7 @@ function animate() {
     neptune.rotation.y += 0.01;
     saturnring.rotation.z += 0.01;
     uranusring.rotation.z += 0.01;
+    pluto.rotation.z += 0.01;
     renderer.render( scene, camera );
 
 }
@@ -162,18 +170,21 @@ function rotate(){
     jupiter.position.x = 50*Math.cos(t1);
     jupiter.position.z = 50*Math.sin(t1);
 
-    saturn.position.x = 60*Math.cos(t4);
-    saturn.position.z = 60*Math.sin(t4);
+    saturn.position.x = 65*Math.cos(t4);
+    saturn.position.z = 65*Math.sin(t4);
     saturnring.position.x = saturn.position.x;
     saturnring.position.z = saturn.position.z;
 
-    uranus.position.x = 70*Math.cos(t3);
-    uranus.position.z = 70*Math.sin(t3);
+    uranus.position.x = 80*Math.cos(t3);
+    uranus.position.z = 80*Math.sin(t3);
     uranusring.position.x = uranus.position.x;
     uranusring.position.z = uranus.position.z;
 
-    neptune.position.x = 80*Math.cos(t);
-    neptune.position.z = 80*Math.sin(t);
+    neptune.position.x = 90*Math.cos(t);
+    neptune.position.z = 90*Math.sin(t);
+
+    pluto.position.x = 100*Math.cos(t);
+    pluto.position.z = 100*Math.sin(t);
     }
     renderer.render( scene, camera );
 }
@@ -183,34 +194,34 @@ function PickPlanet() {
     for (let i = 0; i < intersects.length; i++) {
         switch(intersects[0].object.userData.parent){
             case "mercury":           
-                if(rotatee == true){
-                    rotatee = false;
-                }else{rotatee = true;}
+                location.href = "mercury.html";
                 break;
             case "venus":
-                camera.lookAt(venus.position);
-                alert(intersects[0].object.userData.parent);
+                location.href = "venus.html";
                 break;
             case "earth":
-                alert(intersects[0].object.userData.parent);
+                location.href = "earth.html";
                 break;
             case "mars":
-                alert(intersects[0].object.userData.parent);
+                location.href = "mars.html";
                 break;
             case "jupiter":
-                alert(intersects[0].object.userData.parent);
+                location.href = "jupiter.html";
                 break;
             case "saturn":
-                alert(intersects[0].object.userData.parent);
+                location.href = "saturn.html";
                 break;
             case "uranus":
-                alert(intersects[0].object.userData.parent);
+                location.href = "uranus.html";
                 break;
             case "neptune":
-                alert(intersects[0].object.userData.parent);
+                location.href = "neptune.html";
                 break;
             case "sun":
                 location.href = "sun.html";
+                break;
+            case "pluton":
+                location.href = "pluto.html";
                 break;
         }
     }
