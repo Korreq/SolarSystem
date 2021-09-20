@@ -108,7 +108,9 @@ neptune.userData.parent = "neptune";
 pluto.userData.parent = "pluton";
 
 const light = new THREE.PointLight( 0xffffff, 2, 100 );
-light.position.set( 0, 0, 0 );
+//ambient light z poprawnymi ustawieniami żeby planety nie były żarówiaste
+//const amblight = new THREE.AmbientLight(0xffffff,0.75);
+
 
 scene.add(venus,mercury,earth,mars,sun,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,light,pluto);
 
