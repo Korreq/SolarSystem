@@ -107,13 +107,18 @@ uranus.userData.parent = "uranus";
 neptune.userData.parent = "neptune";
 pluto.userData.parent = "pluton";
 
+//swiatło dyrekcyjne
 const light = new THREE.PointLight( 0xffffff, 2, 100 );
 //ambient light z poprawnymi ustawieniami żeby planety nie były żarówiaste
 //const amblight = new THREE.AmbientLight(0xffffff,0.75);
 
 
-scene.add(venus,mercury,earth,mars,sun,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,light,pluto);
+scene.add(venus,mercury,earth,mars,sun,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,pluto);
 
+light.position.set( 0, 0, 0 );
+//scene.add(amblight);
+//scene.remove(light);
+scene.add(light);
 mercury.position.x = 10;
 venus.position.x = 20;
 earth.position.x = 30;
