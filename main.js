@@ -119,6 +119,7 @@ light.position.set( 0, 0, 0 );
 //scene.add(amblight);
 //scene.remove(light);
 scene.add(light);
+
 mercury.position.x = 10;
 venus.position.x = 20;
 earth.position.x = 30;

@@ -4,7 +4,7 @@ import * as THREE from 'three';
 function init(){
 
 
-    let planeta,scene,camera,renderer,controls;
+    let neptune,scene,camera,renderer,controls;
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight);
     renderer = new THREE.WebGLRenderer();
@@ -17,16 +17,16 @@ function init(){
     const geometry = new THREE.SphereGeometry(5.5,32,32);
     const textura = new THREE.TextureLoader().load("images/neptunemap.jpg");
     const material = new THREE.MeshBasicMaterial( { map: textura } );
-    planeta = new THREE.Mesh( geometry, material );
+    neptune = new THREE.Mesh( geometry, material );
 
-    scene.add(planeta,camera);
-    planeta.position.y = 0;
+    scene.add(neptune,camera);
+    neptune.position.y = 0;
     //camera.position.set(17,0,0);
     camera.position.set(0,0,17);
 
     function animate() {
         requestAnimationFrame( animate );
-        planeta.rotation.y += 0.01;
+        neptune.rotation.y += 0.01;
         renderer.render( scene, camera );
     }
     animate();

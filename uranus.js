@@ -4,7 +4,7 @@ import * as THREE from 'three';
 function init(){
 
 
-    let planeta,scene,camera,renderer,controls;
+    let uranus,scene,camera,renderer,controls;
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight);
     renderer = new THREE.WebGLRenderer();
@@ -17,15 +17,15 @@ function init(){
     const geometry = new THREE.SphereGeometry(5.5,32,32);
     const textura = new THREE.TextureLoader().load("images/uranusmap.jpg");
     const material = new THREE.MeshBasicMaterial( { map: textura } );
-    planeta = new THREE.Mesh( geometry, material );
+    uranus = new THREE.Mesh( geometry, material );
 
     const geometry_uranusring = new THREE.TorusGeometry( 8, 1.5, 2, 100 );
     const textura_uranusring = new THREE.TextureLoader().load("images/uranusringcolour.jpg");
     const material_uranusring = new THREE.MeshBasicMaterial( { map: textura_uranusring } );
     const uranusring = new THREE.Mesh( geometry_uranusring, material_uranusring );
 
-    scene.add(planeta,camera,uranusring);
-    planeta.position.y = 0;
+    scene.add(uranus,camera,uranusring);
+    uranus.position.y = 0;
     uranusring.position.y = 0;
     uranusring.rotation.x = 1.6;
     //camera.position.set(17,0,0);
@@ -33,7 +33,7 @@ function init(){
 
     function animate() {
         requestAnimationFrame( animate );
-        planeta.rotation.y += 0.01;
+        uranus.rotation.y += 0.01;
         uranusring.rotation.z += 0.01;
         renderer.render( scene, camera );
     }
