@@ -30,6 +30,13 @@ function stars(){
 }
 Array(200).fill().forEach(stars);
 
+function lupa(){
+    for (let i = 0; i < 5; i++) {
+        setInterval(() => {camera.position.y += 1;}, 50);
+      }
+    
+}
+
 const pawel = new THREE.BoxGeometry(4,4,4);
 const paweltex = new THREE.TextureLoader().load("images/pawel.jpg");
 const pawel_mate = new THREE.MeshBasicMaterial({ map: paweltex}); 
@@ -227,6 +234,7 @@ function PickPlanet() {
                 break;
             case "sun":
                 location.href = "sun.html";
+                //lupa();
                 break;
             case "pluton":
                 location.href = "pluto.html";
