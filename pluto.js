@@ -16,7 +16,8 @@ function init(){
 
     const geometry = new THREE.SphereGeometry(5.5,32,32);
     const textura = new THREE.TextureLoader().load("images/plutomap.jpg");
-    const material = new THREE.MeshBasicMaterial( { map: textura } );
+    const height = new THREE.TextureLoader().load("images/plutobump.jpg");
+    const material = new THREE.MeshBasicMaterial( { map: textura, displacementMap: height } );
     pluto = new THREE.Mesh( geometry, material );
 
     scene.add(pluto,camera);

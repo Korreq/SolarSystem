@@ -16,7 +16,7 @@ function init(){
 
     const geometry = new THREE.SphereGeometry(5.5,32,32);
     const textura = new THREE.TextureLoader().load("images/uranusmap.jpg");
-    const material = new THREE.MeshBasicMaterial( { map: textura } );
+    const material = new THREE.MeshBasicMaterial( { map: textura} );
     uranus = new THREE.Mesh( geometry, material );
 
     const geometry_uranusring = new THREE.TorusGeometry( 8, 1.5, 2, 100 );

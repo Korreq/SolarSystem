@@ -16,7 +16,8 @@ function init(){
 
     const geometry = new THREE.SphereGeometry(5.5,32,32);
     const textura = new THREE.TextureLoader().load("images/mercurymap.jpg");
-    const material = new THREE.MeshBasicMaterial( { map: textura } );
+    const height = new THREE.TextureLoader().load("images/mercurybump.jpg");
+    const material = new THREE.MeshBasicMaterial( { map: textura, displacementMap: height } );
     mercury = new THREE.Mesh( geometry, material );
 
     scene.add(mercury,camera);

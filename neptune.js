@@ -16,7 +16,7 @@ function init(){
 
     const geometry = new THREE.SphereGeometry(5.5,32,32);
     const textura = new THREE.TextureLoader().load("images/neptunemap.jpg");
-    const material = new THREE.MeshBasicMaterial( { map: textura } );
+    const material = new THREE.MeshBasicMaterial( { map: textura} );
     neptune = new THREE.Mesh( geometry, material );
 
     scene.add(neptune,camera);

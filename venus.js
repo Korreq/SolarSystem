@@ -14,9 +14,10 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(5.5,32,32);
+    const geometry = new THREE.SphereGeometry(9,32,32);
     const textura = new THREE.TextureLoader().load("images/venusmap.jpg");
-    const material = new THREE.MeshBasicMaterial( { map: textura } );
+    const height = new THREE.TextureLoader().load("images/venusbump.jpg");
+    const material = new THREE.MeshBasicMaterial( { map: textura, displacementMap: height } );
     venus = new THREE.Mesh( geometry, material );
     
     scene.add(venus,camera);

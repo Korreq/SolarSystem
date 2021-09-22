@@ -24,11 +24,11 @@ function stars(){
     const material = new THREE.MeshBasicMaterial({color: 0xffffff});
     const star = new THREE.Mesh(geometry,material);
 
-    const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(250));
+    const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(500));
     star.position.set(x,y,z);
     scene.add(star);
 }
-Array(200).fill().forEach(stars);
+Array(500).fill().forEach(stars);
 
 function lupa(){
     for (let i = 0; i < 5; i++) {
@@ -233,8 +233,8 @@ function PickPlanet() {
                 location.href = "neptune.html";
                 break;
             case "sun":
-                location.href = "sun.html";
-                //lupa();
+                //location.href = "sun.html";
+                lupa();
                 break;
             case "pluton":
                 location.href = "pluto.html";

@@ -1,6 +1,6 @@
 import './style-sun.css';
 import * as THREE from 'three';
-//import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
 function init(){
 
 
@@ -14,15 +14,18 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(5.5,32,32);
+    const geometry = new THREE.SphereGeometry(15,256,256,4,6.29);
     const textura = new THREE.TextureLoader().load("images/marsmap.jpg");
-    const material = new THREE.MeshBasicMaterial( { map: textura } );
+    const height = new THREE.TextureLoader().load("images/mars_1k_topo.jpg");
+    const material = new THREE.MeshStandardMaterial( { map: textura, displacementMap: height } );
     mars = new THREE.Mesh( geometry, material );
 
     scene.add(mars,mars);
     mars.position.y = 0;
+    const amblight = new THREE.AmbientLight(0xffffff,0.75);
+    scene.add(amblight);
     //camera.position.set(17,0,0);
-    camera.position.set(0,0,17);
+    camera.position.set(0,0,27);
 
     function animate() {
         requestAnimationFrame( animate );
@@ -31,7 +34,7 @@ function init(){
     }
     animate();
 
-    //controls = new OrbitControls(camera, renderer.domElement);
+    controls = new OrbitControls(camera, renderer.domElement);
 
     }
     init();
