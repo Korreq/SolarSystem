@@ -14,14 +14,16 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(5.5,32,32);
+    const geometry = new THREE.SphereGeometry(8,64,64);
     const textura = new THREE.TextureLoader().load("images/mercurymap.jpg");
     const height = new THREE.TextureLoader().load("images/mercurybump.jpg");
-    const material = new THREE.MeshBasicMaterial( { map: textura, displacementMap: height } );
+    const material = new THREE.MeshPhongMaterial( { map: textura, displacementMap: height } );
     mercury = new THREE.Mesh( geometry, material );
 
     scene.add(mercury,camera);
     mercury.position.y = 0;
+    const amblight = new THREE.AmbientLight(0xffffff,0.75);
+    scene.add(amblight);
     //camera.position.set(17,0,0);
     camera.position.set(0,0,17);
 

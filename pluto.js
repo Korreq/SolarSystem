@@ -14,14 +14,16 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(5.5,32,32);
+    const geometry = new THREE.SphereGeometry(9,128,128,4,6.3);
     const textura = new THREE.TextureLoader().load("images/plutomap.jpg");
     const height = new THREE.TextureLoader().load("images/plutobump.jpg");
-    const material = new THREE.MeshBasicMaterial( { map: textura, displacementMap: height } );
+    const material = new THREE.MeshPhongMaterial( { map: textura,displacementMap: height } );
     pluto = new THREE.Mesh( geometry, material );
 
     scene.add(pluto,camera);
     pluto.position.y = 0;
+    const amblight = new THREE.AmbientLight(0xffffff,0.75);
+    scene.add(amblight);
     //camera.position.set(17,0,0);
     camera.position.set(0,0,17);
 

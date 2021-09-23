@@ -21,7 +21,8 @@ function init(){
 
     const geometry_moon = new THREE.SphereGeometry(8,32,32);
     const textura_moon = new THREE.TextureLoader().load("images/moon.jpg");
-    const material_moon = new THREE.MeshBasicMaterial( { map: textura_moon } );
+    const height2 = new THREE.TextureLoader().load("images/moonbump.jpg");
+    const material_moon = new THREE.MeshPhongMaterial( { map: textura_moon, displacementMap: height2 } );
     moon = new THREE.Mesh( geometry_moon, material_moon );
 
     scene.add(earth,camera,moon);
