@@ -1,10 +1,10 @@
 import './style-sun.css';
 import * as THREE from 'three';
-import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
+//import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
 function init(){
 
 
-    let venus,scene,camera,renderer,controls;
+    let venus,scene,camera,renderer,controls,venus2;
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight);
     renderer = new THREE.WebGLRenderer();
@@ -14,13 +14,13 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(9,64,64);
+    const geometry = new THREE.SphereGeometry(9,32,32,4,6.3); 
     const textura = new THREE.TextureLoader().load("images/venusmap.jpg");
     const height = new THREE.TextureLoader().load("images/venusbump.jpg");
     const material = new THREE.MeshPhongMaterial( { map: textura, displacementMap: height } );
     venus = new THREE.Mesh( geometry, material );
     
-    scene.add(venus,camera);
+    scene.add(camera,venus2,venus);
     venus.position.y = 0;
     const amblight = new THREE.AmbientLight(0xffffff,0.75);
     scene.add(amblight);
@@ -29,12 +29,12 @@ function init(){
 
     function animate() {
         requestAnimationFrame( animate );
-        //venus.rotation.y += 0.01;
+        venus.rotation.y += 0.01;
         renderer.render( scene, camera );
     }
     animate();
 
-    controls = new OrbitControls(camera, renderer.domElement);
+    //controls = new OrbitControls(camera, renderer.domElement);
 
     }
     init();

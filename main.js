@@ -72,9 +72,9 @@ const textura_saturn = new THREE.TextureLoader().load("images/saturnmap.jpg");
 const material_saturn = new THREE.MeshStandardMaterial( { map: textura_saturn } );
 const saturn = new THREE.Mesh( geometry_saturn, material_saturn );
 
-const geometry_saturnring = new THREE.TorusGeometry( 5, 2, 2, 100 );
+const geometry_saturnring = new THREE.TorusGeometry( 6, 1.5, 2, 100 );
 const textura_saturnring = new THREE.TextureLoader().load("images/saturnringcolor.jpg");
-const material_saturnring = new THREE.MeshStandardMaterial( { map: textura_saturnring } );
+const material_saturnring = new THREE.MeshStandardMaterial( { map: textura_saturnring,transparent: true,opacity: 0.7 } );
 const saturnring = new THREE.Mesh( geometry_saturnring, material_saturnring );
 
 const geometry_uranus = new THREE.SphereGeometry(3,32,32);
@@ -82,9 +82,9 @@ const textura_uranus = new THREE.TextureLoader().load("images/uranusmap.jpg");
 const material_uranus = new THREE.MeshStandardMaterial( { map: textura_uranus } );
 const uranus = new THREE.Mesh( geometry_uranus, material_uranus );
 
-const geometry_uranusring = new THREE.TorusGeometry( 4, 1.5, 2, 100 );
+const geometry_uranusring = new THREE.TorusGeometry( 5, 1, 2, 100 );
 const textura_uranusring = new THREE.TextureLoader().load("images/uranusringcolour.jpg");
-const material_uranusring = new THREE.MeshStandardMaterial( { map: textura_uranusring } );
+const material_uranusring = new THREE.MeshStandardMaterial( { map: textura_uranusring,transparent: true,opacity: 0.7 } );
 const uranusring = new THREE.Mesh( geometry_uranusring, material_uranusring );
 
 const geometry_neptune = new THREE.SphereGeometry(3,32,32);

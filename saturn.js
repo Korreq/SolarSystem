@@ -14,21 +14,20 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(5.5,32,32);
+    const geometry = new THREE.SphereGeometry(9,32,32);
     const textura = new THREE.TextureLoader().load("images/saturnmap.jpg");
     const material = new THREE.MeshBasicMaterial( { map: textura} );
     planeta = new THREE.Mesh( geometry, material );
 
-    const geometry_saturnring = new THREE.TorusGeometry( 10, 2, 2, 100 );
+    const geometry_saturnring = new THREE.TorusGeometry( 12, 2, 2, 100 );
     const textura_saturnring = new THREE.TextureLoader().load("images/saturnringcolor.jpg");
-    const material_saturnring = new THREE.MeshBasicMaterial( { map: textura_saturnring } );
+    const material_saturnring = new THREE.MeshBasicMaterial( { map: textura_saturnring,transparent: true,opacity: 0.7 } );
     const saturnring = new THREE.Mesh( geometry_saturnring, material_saturnring );
 
     scene.add(planeta,camera,saturnring);
     planeta.position.y = 0;
     saturnring.position.y = 0;
     saturnring.rotation.x = 1.6;
-    //camera.position.set(17,0,0);
     camera.position.set(0,0,17);
 
     function animate() {
@@ -39,7 +38,7 @@ function init(){
     }
     animate();
 
-   // controls = new OrbitControls(camera, renderer.domElement);
+    //controls = new OrbitControls(camera, renderer.domElement);
 
     }
     init();

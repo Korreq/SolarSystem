@@ -19,7 +19,7 @@ function init(){
     const material = new THREE.MeshPhongMaterial( { map: textura, displacementMap: height } );
     earth = new THREE.Mesh( geometry, material );               
 
-    const geometry_moon = new THREE.SphereGeometry(8,32,32);
+    const geometry_moon = new THREE.SphereGeometry(8,16,16);
     const textura_moon = new THREE.TextureLoader().load("images/moon.jpg");
     const height2 = new THREE.TextureLoader().load("images/moonbump.jpg");
     const material_moon = new THREE.MeshPhongMaterial( { map: textura_moon, displacementMap: height2 } );

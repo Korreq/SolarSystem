@@ -14,7 +14,7 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(5.5,32,32);
+    const geometry = new THREE.SphereGeometry(9,32,32);
     const textura = new THREE.TextureLoader().load("images/jupitermap.jpg");
     const material = new THREE.MeshBasicMaterial( { map: textura } );
     jupiter = new THREE.Mesh( geometry, material );

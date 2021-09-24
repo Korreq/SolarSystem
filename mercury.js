@@ -14,7 +14,7 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(8,64,64);
+    const geometry = new THREE.SphereGeometry(8,32,32);
     const textura = new THREE.TextureLoader().load("images/mercurymap.jpg");
     const height = new THREE.TextureLoader().load("images/mercurybump.jpg");
     const material = new THREE.MeshPhongMaterial( { map: textura, displacementMap: height } );
