@@ -14,7 +14,7 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(9,32,32,4,6.3); 
+    const geometry = new THREE.SphereGeometry(9,32,32); 
     const textura = new THREE.TextureLoader().load("images/venusmap.jpg");
     const height = new THREE.TextureLoader().load("images/venusbump.jpg");
     const material = new THREE.MeshPhongMaterial( { map: textura, displacementMap: height } );

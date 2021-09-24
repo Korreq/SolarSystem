@@ -28,12 +28,12 @@ function init(){
     planeta.position.y = 0;
     saturnring.position.y = 0;
     saturnring.rotation.x = 1.6;
-    camera.position.set(0,0,17);
-
+    camera.position.set(0,2,18);
+    camera.lookAt(planeta.position);
     function animate() {
         requestAnimationFrame( animate );
-        planeta.rotation.y += 0.01;
-        saturnring.rotation.z += 0.01;
+        planeta.rotation.y -= 0.002;
+        saturnring.rotation.z += 0.002;
         renderer.render( scene, camera );
     }
     animate();

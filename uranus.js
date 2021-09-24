@@ -33,13 +33,14 @@ function init(){
     uranus.position.y = 0;
     uranusring.position.y = 0;
     uranusring.rotation.x = 1.6;
-    camera.position.set(17,0,0);
-    camera.position.set(0,0,17);
+    //camera.position.set(17,0,0);
+    camera.position.set(0,3,18);
+    camera.lookAt(uranus.position);
 
     function animate() {
         requestAnimationFrame( animate );
-        uranus.rotation.y += 0.01;
-        uranusring.rotation.z += 0.01;
+        uranus.rotation.y += 0.001;
+        uranusring.rotation.z += 0.001;
         renderer.render( scene, camera );
     }
     animate();
