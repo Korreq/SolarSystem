@@ -1,7 +1,6 @@
 import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js';
-var rotatee = Boolean(true);
 function init(){
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight);
@@ -57,6 +56,10 @@ const textura_earth = new THREE.TextureLoader().load("images/earthmap.jpg");
 const material_earth = new THREE.MeshStandardMaterial( { map: textura_earth } );
 const earth = new THREE.Mesh( geometry_earth, material_earth );
 
+const geometry_moon = new THREE.SphereGeometry(0.5,64,64);
+const material_moon = new THREE.MeshPhongMaterial({map : new THREE.TextureLoader().load('images/moon.jpg')});
+const moon = new THREE.Mesh( geometry_moon, material_moon );
+
 const geometry_mars = new THREE.SphereGeometry(1,32,32);
 const textura_mars = new THREE.TextureLoader().load("images/marsmap.jpg");
 const material_mars = new THREE.MeshStandardMaterial( { map: textura_mars } );
@@ -74,7 +77,7 @@ const saturn = new THREE.Mesh( geometry_saturn, material_saturn );
 
 const geometry_saturnring = new THREE.TorusGeometry( 6, 1.5, 2, 100 );
 const textura_saturnring = new THREE.TextureLoader().load("images/saturnringcolor.jpg");
-const material_saturnring = new THREE.MeshStandardMaterial( { map: textura_saturnring,transparent: true,opacity: 0.7 } );
+const material_saturnring = new THREE.MeshBasicMaterial( { map: textura_saturnring,transparent: true,opacity: 0.7 } );
 const saturnring = new THREE.Mesh( geometry_saturnring, material_saturnring );
 
 const geometry_uranus = new THREE.SphereGeometry(3,32,32);
@@ -84,7 +87,7 @@ const uranus = new THREE.Mesh( geometry_uranus, material_uranus );
 
 const geometry_uranusring = new THREE.TorusGeometry( 5, 1, 2, 100 );
 const textura_uranusring = new THREE.TextureLoader().load("images/uranusringcolour.jpg");
-const material_uranusring = new THREE.MeshStandardMaterial( { map: textura_uranusring,transparent: true,opacity: 0.7 } );
+const material_uranusring = new THREE.MeshBasicMaterial( { map: textura_uranusring,transparent: true,opacity: 0.7 } );
 const uranusring = new THREE.Mesh( geometry_uranusring, material_uranusring );
 
 const geometry_neptune = new THREE.SphereGeometry(3,32,32);
@@ -113,6 +116,7 @@ saturn.userData.parent = "saturn";
 uranus.userData.parent = "uranus";
 neptune.userData.parent = "neptune";
 pluto.userData.parent = "pluton";
+moon.userData.parent = "moon";
 
 //swiatło dyrekcyjne
 const light = new THREE.PointLight( 0xffffff, 2, 100 );
@@ -120,37 +124,28 @@ const light = new THREE.PointLight( 0xffffff, 2, 100 );
 //const amblight = new THREE.AmbientLight(0xffffff,0.75);
 
 
-scene.add(venus,mercury,earth,mars,sun,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,pluto);
+scene.add(venus,mercury,earth,mars,sun,pawel2,neptune,uranus,uranusring,jupiter,saturn,saturnring,pluto,moon);
 
 light.position.set( 0, 0, 0 );
 //scene.add(amblight);
 //scene.remove(light);
 scene.add(light);
 
-mercury.position.x = 10;
-venus.position.x = 20;
-earth.position.x = 30;
-mars.position.x = 40;
-jupiter.position.x = 50;
-saturn.position.x = 65;
-saturnring.position.x = saturn.position.x;
+
 saturnring.rotation.x = 1.6;
-uranus.position.x = 80;
-uranusring.position.x = uranus.position.x;
 uranusring.rotation.x = 1.6;
-neptune.position.x = 90;
-pluto.position.x = 100;
+
 
 camera.position.set(0,50,0);
 
-var t=0,t1=0,t2=0,t3=0,t4=0,t5=0,t6=0,t7=0;
+var t=0,t1=0,t2=0,t3=0,t4=0,t5=0,t6=0,t7=0,t8=0;
 
 const controls = new OrbitControls( camera, renderer.domElement );
 
 function animate() {
 	requestAnimationFrame( animate );
-    
     earth.rotation.y += 0.01;
+    moon.rotation.y += 0.01;
     sun.rotation.y += 0.01;
     mars.rotation.y += 0.01;
     venus.rotation.y += 0.01;
@@ -165,11 +160,10 @@ function animate() {
     renderer.render( scene, camera );
 
 }
+
 function rotate(){
     requestAnimationFrame( rotate );
-    if(rotatee == true){
-    t  += 0.001, t1 += 0.0011, t2 += 0.0015, t3 += 0.0014, t4 += 0.0016, t5 += 0.0017, t6 += 0.0018, t7 += 0.0019;
-
+    t  += 0.001, t1 += 0.0011, t2 += 0.0015, t3 += 0.0014, t4 += 0.0016, t5 += 0.0017, t6 += 0.0018, t7 += 0.0019, t8 += 0.019;;
     mercury.position.x = 10*Math.cos(t5);
     mercury.position.z = 10*Math.sin(t5);
 
@@ -179,6 +173,9 @@ function rotate(){
     earth.position.x = 30*Math.cos(t7);
     earth.position.z = 30*Math.sin(t7);
 
+    moon.position.x = earth.position.x+Math.cos(t8)*3;
+    moon.position.z = earth.position.z+Math.sin(t8)*3;
+    
     mars.position.x = 40*Math.cos(t6);
     mars.position.z = 40*Math.sin(t6);
 
@@ -200,7 +197,6 @@ function rotate(){
 
     pluto.position.x = 100*Math.cos(t);
     pluto.position.z = 100*Math.sin(t);
-    }
     renderer.render( scene, camera );
 }
 function PickPlanet() {
@@ -215,6 +211,9 @@ function PickPlanet() {
                 location.href = "venus.html";
                 break;
             case "earth":
+                location.href = "earth.html";
+                break;
+            case "moon":
                 location.href = "earth.html";
                 break;
             case "mars":
@@ -233,8 +232,8 @@ function PickPlanet() {
                 location.href = "neptune.html";
                 break;
             case "sun":
-                //location.href = "sun.html";
-                lupa();
+                location.href = "sun.html";
+                //lupa();
                 break;
             case "pluton":
                 location.href = "pluto.html";

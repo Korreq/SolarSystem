@@ -14,22 +14,39 @@ function init(){
 
 
 
-    const geometry = new THREE.SphereGeometry(15,256,256,4,6.29);
+    const geometry = new THREE.SphereGeometry(2,64,64);
     const textura = new THREE.TextureLoader().load("images/marsmap.jpg");
-    const height = new THREE.TextureLoader().load("images/mars_1k_topo.jpg");
-    const material = new THREE.MeshStandardMaterial( { map: textura, displacementMap: height } );
+    const material = new THREE.MeshPhongMaterial( {
+        map: textura,
+        bumpMap: new THREE.TextureLoader().load("images/mars_1k_topo.jpg"),
+        bumpScale : 0.09
+    } );
     mars = new THREE.Mesh( geometry, material );
 
     scene.add(mars,mars);
     mars.position.y = 0;
-    const amblight = new THREE.AmbientLight(0xffffff,0.75);
-    scene.add(amblight);
     //camera.position.set(17,0,0);
-    camera.position.set(0,0,27);
+    camera.position.set(0,0,4);
+
+    const stargeometry = new THREE.SphereGeometry(80,64,64);
+            const starmaterial = new THREE.MeshBasicMaterial({
+                map : new THREE.TextureLoader().load('images/stars.png'),
+                side : THREE.BackSide,
+            });
+            const stars = new THREE.Mesh( stargeometry, starmaterial);
+            scene.add(stars);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff,0.2);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xffffff,1);
+    pointLight.position.set(5,3,5);
+    scene.add(pointLight);
 
     function animate() {
         requestAnimationFrame( animate );
-        mars.rotation.y += 0.01;
+        mars.rotation.y -= 0.005;
+        stars.rotation.y -= 0.002;
         renderer.render( scene, camera );
     }
     animate();

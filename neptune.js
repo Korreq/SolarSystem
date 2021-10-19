@@ -24,9 +24,18 @@ function init(){
     //camera.position.set(17,0,0);
     camera.position.set(0,0,17);
 
+    const stargeometry = new THREE.SphereGeometry(80,64,64);
+            const starmaterial = new THREE.MeshBasicMaterial({
+                map : new THREE.TextureLoader().load('images/stars.png'),
+                side : THREE.BackSide,
+            });
+            const stars = new THREE.Mesh( stargeometry, starmaterial);
+            scene.add(stars);
+
     function animate() {
         requestAnimationFrame( animate );
-        neptune.rotation.y += 0.01;
+        neptune.rotation.y -= 0.005;
+        stars.rotation.y -= 0.002;
         renderer.render( scene, camera );
     }
     animate();
