@@ -3,13 +3,20 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style-sun.css">
-  <script>
-      function back(){
-        location.href = "index.html";
-      }
+  <!-- <script type="module" src="/venus.js"></script> -->
+  <script type="module">
+  import {opacity} from "./venus.js";
+  document.querySelector('#hello').addEventListener('click', opacity)
   </script>
+  <script>
+    function back(){
+      location.href = "index.html";
+    }
+</script>
 </head>
 <body>
+  
+  
   <nav class="site-nav">
     <button class="side-menu-trigger">Menu</button>
     <button class="back" onclick="back();">Back</button>
@@ -26,8 +33,8 @@
           </a>
         </li>
         <li>
-          <a href="">
-            Yet another one
+        <a>
+          <button type="button" id="hello">Wyłaczenie atmosfery</button>
           </a>
         </li>
         <li>
@@ -43,7 +50,7 @@
       </ul>
   </aside>
   </nav>
-    <script type="module" src="/venus.js"></script>
+    
 </body>
 </html>
 
