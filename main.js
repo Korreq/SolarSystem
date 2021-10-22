@@ -18,16 +18,24 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-function stars(){
-    const geometry = new THREE.SphereGeometry(0.25,24,24);
-    const material = new THREE.MeshBasicMaterial({color: 0xffffff});
-    const star = new THREE.Mesh(geometry,material);
+// function stars(){
+//     const geometry = new THREE.SphereGeometry(0.25,24,24);
+//     const material = new THREE.MeshBasicMaterial({color: 0xffffff});
+//     const star = new THREE.Mesh(geometry,material);
 
-    const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(500));
-    star.position.set(x,y,z);
-    scene.add(star);
-}
-Array(500).fill().forEach(stars);
+//     const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(500));
+//     star.position.set(x,y,z);
+//     scene.add(star);
+// }
+// Array(500).fill().forEach(stars);
+
+const stargeometry = new THREE.SphereGeometry(180,64,64);
+            const starmaterial = new THREE.MeshBasicMaterial({
+                map : new THREE.TextureLoader().load('images/stars.png'),
+                side : THREE.BackSide,
+            });
+            const stars = new THREE.Mesh( stargeometry, starmaterial);
+            scene.add(stars);
 
 function lupa(){
     for (let i = 0; i < 5; i++) {
@@ -54,6 +62,11 @@ const venus = new THREE.Mesh( geometry_venus, material_venus );
 const geometry_earth = new THREE.SphereGeometry(2,32,32);
 const textura_earth = new THREE.TextureLoader().load("images/earthmap.jpg");
 const material_earth = new THREE.MeshStandardMaterial( { map: textura_earth } );
+// const material_earth = new THREE.MeshStandardMaterial({
+//     map : new THREE.TextureLoader().load('images/earthmap.jpg'),
+//     bumpMap : new THREE.TextureLoader().load('images/earthbump.jpg'),
+//     bumpScale : 0.1,
+// });
 const earth = new THREE.Mesh( geometry_earth, material_earth );
 
 const geometry_moon = new THREE.SphereGeometry(0.5,64,64);

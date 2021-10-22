@@ -43,7 +43,7 @@ function init(){
             });
             const moon = new THREE.Mesh( geometry_moon, material_moon );
             scene.add(moon);
-            moon.position.set(3,3,0);
+            moon.position.set(3,0,0);
             //moon.position.set(earth.position.x-3,earth.position.y-2,earth.position.z-2)
 
             const ambientLight = new THREE.AmbientLight(0xffffff,0.2);
@@ -61,7 +61,7 @@ function init(){
                 t  += 0.01;
                 moon.position.z = 3*Math.cos(t);
                 moon.position.x = 3*Math.sin(t);
-                moon.position.y = 3*Math.sin(t);
+                //moon.position.y = 3*Math.sin(t);
 				earth.rotation.y -= 0.0015;
                 cloud.rotation.y -= 0.0015;
                 stars.rotation.y -= 0.002;
